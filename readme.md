@@ -1,4 +1,4 @@
-# JavaScript on Azure Learn Path - Module 2 - Deploying a basic app to Azure
+# Node.js on Azure - Module 2 - Deploying a basic app to Azure
 
 This Learn module deploys a basic app to Azure App Service.
 
