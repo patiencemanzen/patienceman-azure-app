@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "cross-env-shell DEBUG=express:* node index.js",
+    "start": "cross-env-shell DEBUG=express:* node app.js",
     "format": "prettier --write ."
   },
   "dependencies": {
