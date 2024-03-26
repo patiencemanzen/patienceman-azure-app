@@ -1,23 +1,23 @@
-import { readFile } from "fs/promises";
+import { readFile } from 'fs/promises';
 import { v4 as uuidv4 } from 'uuid';
 
-let RENTALS=[];
+let RENTALS = [];
 
 // Read data in when app starts
 // Database is kept in memory only
-export const connectToDatabase = async () =>{
+export const connectToDatabase = async () => {
   const fakeData = JSON.parse(
-  await readFile(new URL("../data/fake-rentals.json", import.meta.url)));
+    await readFile(new URL('../data/fake-rentals.json', import.meta.url))
+  );
 
-  for await(const item of fakeData){
-    await addRental(item)
+  for await (const item of fakeData) {
+    await addRental(item);
   }
-}
+};
 
 export const getRentals = () => RENTALS.sort((a, b) => b.id - a.id);
 
-export const getRentalById = (id) =>
-  RENTALS.find((rental) => rental.id === id);
+export const getRentalById = (id) => RENTALS.find((rental) => rental.id === id);
 
 export const deleteRentalById = (id) => {
   const index = RENTALS.findIndex((rental) => rental.id === id);
@@ -33,7 +33,7 @@ export const addRental = (rental) => {
     ...rental,
   });
   console.log(getRentals());
-}
+};
 
 export const updateRental = (rental) => {
   const index = RENTALS.findIndex((r) => r.id === rental.id);

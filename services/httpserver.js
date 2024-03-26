@@ -51,7 +51,7 @@ export default async (app) => {
     express.static('public', {
       maxAge: '1d',
       cacheControl: true,
-    }),
+    })
   );
 
   // Parse JSON

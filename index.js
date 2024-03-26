@@ -33,5 +33,7 @@ const onGlobalErrors = (error) => {
 // Create web server
 configureHttpServer(app).then((webserver) => {
   webserver.on('error', onGlobalErrors);
-  webserver.listen(port, '0.0.0.0', () => console.log(`Server listening on port: ${port}`));
+  webserver.listen(port, '0.0.0.0', () =>
+    console.log(`Server listening on port: ${port}`)
+  );
 });

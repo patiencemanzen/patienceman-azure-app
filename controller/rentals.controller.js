@@ -23,9 +23,9 @@ export const apiAllRentals = async (req, res) => {
 // Delete view
 export const viewDeleteRental = async (req, res, next) => {
   const { id } = req.params;
-  
+
   const rental = await getRentalById(id);
-  if(!rental) return next(createError(400, 'Rental not found'));
+  if (!rental) return next(createError(400, 'Rental not found'));
 
   res.render('delete', {
     rental,
@@ -36,7 +36,7 @@ export const apiDeleteRental = async (req, res, next) => {
   const { id } = req.params;
 
   const rental = await getRentalById(id);
-  if(!rental) return next(createError(400, 'Rental not found'));
+  if (!rental) return next(createError(400, 'Rental not found'));
 
   await deleteRentalById(id);
   res.redirect('/');
@@ -47,14 +47,13 @@ export const viewAddNewRental = (req, res) => {
 };
 // New API
 export const apiAddNewRental = async (req, res) => {
-  const {
-    name, description, price, location, bedrooms, bathrooms, link,
-  } = req.body;
+  const { name, description, price, location, bedrooms, bathrooms, link } =
+    req.body;
 
   await addRental({
     name,
     description,
-    image: "https://picsum.photos/200",
+    image: 'https://picsum.photos/200',
     price,
     location,
     bedrooms,
@@ -67,7 +66,7 @@ export const apiAddNewRental = async (req, res) => {
 export const viewEditRental = async (req, res, next) => {
   const { id } = req.params;
   const rental = await getRentalById(id);
-  if(!rental) return next(createError(400, 'Rental not found'));
+  if (!rental) return next(createError(400, 'Rental not found'));
 
   res.render('edit', {
     rental,
@@ -75,13 +74,12 @@ export const viewEditRental = async (req, res, next) => {
 };
 // Edit API
 export const apiEditRental = async (req, res, next) => {
-  const {
-    name, description, price, location, bedrooms, bathrooms, link,
-  } = req.body;
+  const { name, description, price, location, bedrooms, bathrooms, link } =
+    req.body;
   const { id } = req.params;
   const rental = await getRentalById(id);
-  if(!rental) return next(createError(400, 'Rental not found'));
-  
+  if (!rental) return next(createError(400, 'Rental not found'));
+
   // don't update image - this will be fixed in Storage module of Learn path
   const updatedRental = {
     ...rental,
@@ -92,7 +90,7 @@ export const apiEditRental = async (req, res, next) => {
     bedrooms,
     bathrooms,
     link,
-  }
+  };
 
   await updateRental(updatedRental);
   res.redirect('/');
