@@ -2,8 +2,9 @@
   "name": "patienceman-azure-app",
   "version": "0.0.1",
   "type": "module",
+  "main": "server.js",
   "scripts": {
-    "start": "cross-env-shell DEBUG=express:* node app.js",
+    "start": "cross-env-shell DEBUG=express:* node --experimental-modules server.js",
     "format": "prettier --write ."
   },
   "dependencies": {
